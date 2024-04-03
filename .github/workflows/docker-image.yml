@@ -14,7 +14,10 @@ jobs:
     steps:
       - name: Delete huge unnecessary tools folder
         run: rm -rf /opt/hostedtoolcache
-    
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
       - name: Docker metadata
         id: meta
         uses: docker/metadata-action@v4
