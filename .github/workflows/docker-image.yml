@@ -10,8 +10,11 @@
 name: Publish rstudio server
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ "main" ]
+    tags: [ "*.*.*" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   push_to_registry:
