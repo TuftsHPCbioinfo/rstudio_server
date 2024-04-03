@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  build-calculate-pi:
+  build-rstudio_server:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: yzhangtufts/r-scrnaseq
+          images: yzhangtufts/rstudio_server
           flavor: latest=true
           tags: |
             type=ref, event=branch
