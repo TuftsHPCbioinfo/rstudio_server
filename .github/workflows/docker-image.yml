@@ -23,7 +23,6 @@ jobs:
         with:
           images: |
             yzhangtufts/rserver
-            ghcr.io/${{ github.repository }}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
