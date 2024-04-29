@@ -20,7 +20,8 @@ RUN apt-get -y update && apt-get -y install python3 python3-dev python3-pip zlib
     texlive-fonts-extra \
     texlive-latex-extra \
     libmagick++-dev fftw3 fftw-dev \
-    libboost-all-dev \
+    libboost-all-dev \ 
+    python-is-python3 \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -43,7 +44,14 @@ RUN cd /opt \
     && make \
     && make install
 
+## Install pandoc
+RUN cd /opt \
+    && wget https://github.com/jgm/pandoc/releases/download/3.1.13/pandoc-3.1.13-1-amd64.deb \
+    && dpkg -i pandoc-3.1.13-1-amd64.deb \
+    && rm pandoc-3.1.13-1-amd64.deb
+
 RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocManager")' \
+    && Rscript -e "install.packages('admix')" \
     && Rscript -e "BiocManager::install('batchelor')" \ 
     && Rscript -e "install.packages('BGLR')" \
     && Rscript -e "install.packages('caret')" \
@@ -66,6 +74,8 @@ RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.p
     && Rscript -e "install.packages('ggven')" \ 
     && Rscript -e "install.packages('gridExtra')" \ 
     && Rscript -e "install.packages('haven')" \
+    && Rscript -e "install.packages('h2o')" \
+    && Rscript -e 'install.packages("janitor")' \
     && Rscript -e "install.packages('markdown')" \ 
     && Rscript -e "install.packages('openxlsx', dependencies = TRUE)" \
     && Rscript -e "install.packages('pandoc')" \
@@ -89,6 +99,6 @@ RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.p
     && Rscript -e "install.packages('vioplot')" \
     && Rscript -e "install.packages('WGCNA')" \
     && Rscript -e "install.packages('wesanderson')" \
-    && Rscript -e "install.packages('xlsx')" \
+    && Rscript -e "install.packages('xlsx')" 
 
 
