@@ -43,29 +43,52 @@ RUN cd /opt \
     && make \
     && make install
 
-RUN Rscript -e "install.packages('devtools')" \
-    && Rscript -e "install.packages('rJava')" \
-    && Rscript -e "install.packages('openxlsx', dependencies = TRUE)" \
-    && Rscript -e "install.packages('remotes')" \
-    && Rscript -e "install.packages('rmdformats')" \ 
-    && Rscript -e "install.packages('vioplot')" \
-    && Rscript -e "install.packages('clustree')" \
-    && Rscript -e "install.packages('ggraph')" \
-    && Rscript -e "install.packages('xlsx')" \
-    && Rscript -e "install.packages('ggthemes')" \ 
-    && Rscript -e 'install.packages("rmarkdown")' \ 
-    && Rscript -e 'install.packages("markdown")' \ 
-    && Rscript -e 'install.packages("reticulate")' \ 
-    && Rscript -e 'install.packages("data.table")' \ 
-    && Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocManager")' \
-    && Rscript -e "install.packages('RColorBrewer')" \
-    && Rscript -e "install.packages('ggsci')" \ 
-    && Rscript -e "BiocManager::install('qusage')" \
+RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocManager")' \
     && Rscript -e "BiocManager::install('batchelor')" \ 
-    && Rscript -e "BiocManager::install(c('GEOquery'))" \
-    && Rscript -e "install.packages('pandoc')" \
-    && Rscript -e "install.packages('wesanderson')" \
+    && Rscript -e "install.packages('BGLR')" \
+    && Rscript -e "install.packages('caret')" \
+    && Rscript -e "install.packages('clustree')" \
+    && Rscript -e "install.packages('cowplot')" \
+    && Rscript -e 'install.packages("data.table")' \ 
+    && Rscript -e "install.packages('devtools')" \
+    && Rscript -e "install.packages('DT')" \
+    && Rscript -e "install.packages('e1071')" \
     && Rscript -e "BiocManager::install('EGSEA')" \
     && Rscript -e "BiocManager::install('EGSEAdata')" \
+    && Rscript -e "BiocManager::install(c('GEOquery'))" \
     && Rscript -e "install.packages('ggbiplot')" \
-    && Rscript -e "BiocManager::install('ReactomePA')" 
+    && Rscript -e "install.packages('ggpubr')" \
+    && Rscript -e "install.packages('ggridges')" \
+    && Rscript -e "install.packages('ggrepel')" \
+    && Rscript -e "install.packages('ggsci')" \ 
+    && Rscript -e "install.packages('ggraph')" \
+    && Rscript -e "install.packages('ggthemes')" \ 
+    && Rscript -e "install.packages('ggven')" \ 
+    && Rscript -e "install.packages('gridExtra')" \ 
+    && Rscript -e "install.packages('haven')" \
+    && Rscript -e "install.packages('markdown')" \ 
+    && Rscript -e "install.packages('openxlsx', dependencies = TRUE)" \
+    && Rscript -e "install.packages('pandoc')" \
+    && Rscript -e "install.packages('patchwork')" \
+    && Rscript -e "install.packages('plotly')" \
+    && Rscript -e "install.packages('poolr')" \
+    && Rscript -e "BiocManager::install('qusage')" \
+    && Rscript -e "install.packages('randomForest')" \
+    && Rscript -e "install.packages('RColorBrewer')" \
+    && Rscript -e "BiocManager::install('ReactomePA')"  \
+    && Rscript -e "install.packages('remotes')" \
+    && Rscript -e "install.packages('reshape2')" \
+    && Rscript -e "install.packages('rmdformats')" \ 
+    && Rscript -e "install.packages('rJava')" \
+    && Rscript -e "install.packages('rmarkdown')" \ 
+    && Rscript -e "install.packages('reticulate')" \ 
+    && Rscript -e "install.packages('Rtsne')" \ 
+    && Rscript -e "install.packages('scales')" \ 
+    && Rscript -e "install.packages('stringi')" \ 
+    && Rscript -e "install.packages('umap')" \
+    && Rscript -e "install.packages('vioplot')" \
+    && Rscript -e "install.packages('WGCNA')" \
+    && Rscript -e "install.packages('wesanderson')" \
+    && Rscript -e "install.packages('xlsx')" \
+
+
