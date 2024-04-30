@@ -4,7 +4,7 @@ on:
     types: [published]
 
 jobs:
-  push-to-dockerhub-and-ghcr:
+  push-to-dockerhub:
     runs-on: ubuntu-latest
     permissions:
       packages: write
