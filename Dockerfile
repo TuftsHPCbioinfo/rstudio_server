@@ -101,7 +101,6 @@ RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.p
     && Rscript -e "install.packages('stringi')" \ 
     && Rscript -e "install.packages('umap')" \
     && Rscript -e "install.packages('vioplot')" \
-    && Rscript -e "install.packages('WGCNA')" \
     && Rscript -e "install.packages('wesanderson')" \
     && Rscript -e "install.packages('xlsx')" 
 
