@@ -14,6 +14,8 @@ RUN apt-get -y update && apt-get -y install python3 python3-dev python3-pip zlib
     libgdal-dev \
     libgeos-dev \
     libproj-dev \
+    default-jre \
+    default-jdk \
     libmysqlclient-dev \
     texlive-latex-base \
     texlive-fonts-recommended \
@@ -71,13 +73,15 @@ RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE))  install.p
     && Rscript -e "install.packages('ggsci')" \ 
     && Rscript -e "install.packages('ggraph')" \
     && Rscript -e "install.packages('ggthemes')" \ 
-    && Rscript -e "install.packages('ggven')" \ 
+    && Rscript -e "install.packages('ggvenn')" \ 
     && Rscript -e "install.packages('gridExtra')" \ 
     && Rscript -e "install.packages('haven')" \
     && Rscript -e "install.packages('h2o')" \
     && Rscript -e 'install.packages("janitor")' \
+    && Rscript -e "install.packages('kableExtra')" \
     && Rscript -e "install.packages('markdown')" \ 
     && Rscript -e "install.packages('openxlsx', dependencies = TRUE)" \
+    && Rscript -e "install.packages('pals')" \
     && Rscript -e "install.packages('pandoc')" \
     && Rscript -e "install.packages('patchwork')" \
     && Rscript -e "install.packages('plotly')" \
