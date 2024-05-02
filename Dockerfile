@@ -123,15 +123,60 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('ggvenn')" \ 
     && Rscript -e "install.packages('gridExtra')" \ 
     && Rscript -e "install.packages('Hmisc')" \
+    && Rscript -e "install.packages('hash')" \
+    && Rscript -e "install.packages('hdf5r')" \
+    && Rscript -e "install.packages('hexbin')" \
+    && Rscript -e "install.packages('htmlTable')" \
     && Rscript -e "install.packages('haven')" \
     && Rscript -e "install.packages('h2o')" \
+    && Rscript -e "install.packages('ica')" \
+    && Rscript -e "install.packages('infotheo')" \
+    && Rscript -e "install.packages('interactiveDisplayBase')" \
+    && Rscript -e "install.packages('interp')" \
     && Rscript -e "install.packages('JADE')" \
+    && Rscript -e "install.packages('jpeg')" \
     && Rscript -e 'install.packages("janitor")' \
+    && Rscript -e "install.packages('kernlab')" \
     && Rscript -e "install.packages('kableExtra')" \
+    && Rscript -e "install.packages('lars')" \
+    && Rscript -e "install.packages('latex2exp')" \
+    && Rscript -e "install.packages('latticeExtra')" \
+    && Rscript -e "install.packages('leiden')" \
+    && Rscript -e "install.packages('lidR')" \
+    && Rscript -e "install.packages('lmerTest')" \
+    && Rscript -e "install.packages('lmodel2')" \
+    && Rscript -e "install.packages('lmtest')" \
+    && Rscript -e "install.packages('logging')" \
+    && Rscript -e "install.packages('lumi')" \
     && Rscript -e "install.packages('magick')" \
-
     && Rscript -e "install.packages('markdown')" \ 
+    && Rscript -e "install.packages('maxprobes')" \
+    && Rscript -e "install.packages('mclust')" \
+    && Rscript -e "install.packages('minet')" \
+    && Rscript -e "install.packages('minfi')" \
+    && Rscript -e "install.packages('minfiData')" \
+    && Rscript -e "install.packages('missMethyl')" \
+    && Rscript -e "install.packages('mnem')" \
+    && Rscript -e "install.packages('modeltools')" \
+    && Rscript -e "install.packages('msigdbr')" \
+    && Rscript -e "install.packages('multcompView')" \
+    && Rscript -e "install.packages('naturalsort')" \
+    && Rscript -e "install.packages('nempi')" \
+    && Rscript -e "install.packages('nleqslv')" \
+    && Rscript -e "install.packages('nor1mix')" \
     && Rscript -e "install.packages('openxlsx', dependencies = TRUE)" \
+    && Rscript -e "install.packages('optparse')" \
+    && Rscript -e "install.packages('paletteer')" \
+    && Rscript -e "install.packages('pbapply')" \
+    && Rscript -e "install.packages('pcaPP')" \
+    && Rscript -e "install.packages('pcalg')" \
+    && Rscript -e "install.packages('permute')" \
+    && Rscript -e "install.packages('pheatmap')" \
+    && Rscript -e "install.packages('pls')" \
+    && Rscript -e "install.packages('prabclus')" \
+    && Rscript -e "install.packages('preprocessCore')" \
+    && Rscript -e "install.packages('prismatic')" \
+    && Rscript -e "install.packages('pscl')" \
     && Rscript -e "install.packages('pals')" \
     && Rscript -e "install.packages('pandoc')" \
     && Rscript -e "install.packages('pals')" \
@@ -139,6 +184,17 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('PerformanceAnalytics')" \
     && Rscript -e "install.packages('plotly')" \
     && Rscript -e "install.packages('poolr')" \
+    && Rscript -e "install.packages('qvalue')" \
+    && Rscript -e "install.packages('quadprog')" \
+    && Rscript -e "install.packages('RNetCDF')" \
+    && Rscript -e "install.packages('rapidjsonr')" \
+    && Rscript -e "install.packages('raster')" \
+    && Rscript -e "install.packages('reshape')" \
+    && Rscript -e "install.packages('restfulr')" \
+    && Rscript -e "install.packages('rgl')" \
+    && Rscript -e "install.packages('rlas')" \
+    && Rscript -e "install.packages('rtracklayer')" \
+    && Rscript -e "install.packages('ruv')" \
     && Rscript -e "install.packages('randomForest')" \
     && Rscript -e "install.packages('RColorBrewer')" \
     && Rscript -e "install.packages('RANN')" \
@@ -155,12 +211,55 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('rmarkdown')" \ 
     && Rscript -e "install.packages('reticulate')" \ 
     && Rscript -e "install.packages('Rtsne')" \ 
+    && Rscript -e "install.packages('s2')" \
+    && Rscript -e "install.packages('scattermore')" \
     && Rscript -e "install.packages('scales')" \ 
-    && Rscript -e "install.packages('stringi')" \ 
+    && Rscript -e "install.packages('shiny')"  \
+    && Rscript -e "install.packages('stringi')" \
+    && Rscript -e "install.packages('scrime')" \
+    && Rscript -e "install.packages('sctransform')" \
+    && Rscript -e "install.packages('sesame')" \
+    && Rscript -e "install.packages('sesameData')" \
+    && Rscript -e "install.packages('sf')" \
+    && Rscript -e "install.packages('sfsmisc')" \
+    && Rscript -e "install.packages('siggenes')" \
+    && Rscript -e "install.packages('sitmo')" \
+    && Rscript -e "install.packages('snowfall')" \
+    && Rscript -e "install.packages('som')" \
+    && Rscript -e "install.packages('sp')" \
+    && Rscript -e "install.packages('spam')" \
+    && Rscript -e "install.packages('spatstat.data')" \
+    && Rscript -e "install.packages('spatstat.explore')" \
+    && Rscript -e "install.packages('spatstat.geom')" \
+    && Rscript -e "install.packages('spatstat.random')" \
+    && Rscript -e "install.packages('spatstat.sparse')" \
+    && Rscript -e "install.packages('spatstat.utils')" \
+    && Rscript -e "install.packages('splus2R')" \
+    && Rscript -e "install.packages('stars')" \
+    && Rscript -e "install.packages('stringdist')" \
+    && Rscript -e "install.packages('sva')" \
+    && Rscript -e "install.packages('tensor')" \
+    && Rscript -e "install.packages('terra')" \
+    && Rscript -e "install.packages('trackplot')" \
+    && Rscript -e "install.packages('tsne')" \
+    && Rscript -e "install.packages('tweedie')" \
+    && Rscript -e "install.packages('typed')" \
     && Rscript -e "install.packages('TMB')" \
     && Rscript -e "install.packages('umap')" \
+    && Rscript -e "install.packages('units')" \
+    && Rscript -e "install.packages('uwot')" \
+    && Rscript -e "install.packages('V8')" \
+    && Rscript -e "install.packages('vcd')" \
+    && Rscript -e "install.packages('vegan')" \
+    && Rscript -e "install.packages('vipor')" \
     && Rscript -e "install.packages('vioplot')" \
     && Rscript -e "install.packages('wesanderson')" \
-    && Rscript -e "install.packages('xlsx')" 
+    && Rscript -e "install.packages('wateRmelon')" \
+    && Rscript -e "install.packages('wheatmap')" \
+    && Rscript -e "install.packages('wk')" \
+    && Rscript -e "install.packages('writexl')" \
+    && Rscript -e "install.packages('xlsx')" \
+    && Rscript -e "install.packages('xts')" \
+    && Rscript -e "install.packages('zeallot')" 
 
 
