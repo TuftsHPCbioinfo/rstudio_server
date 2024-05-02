@@ -52,7 +52,8 @@ RUN cd /opt \
     && dpkg -i pandoc-3.1.13-1-amd64.deb \
     && rm pandoc-3.1.13-1-amd64.deb
 
-RUN && Rscript -e "install.packages('amap')" \
+RUN Rscript -e "install.packages('amap')" \
+    && Rscript -e "install.packages('aplot')" \
     && Rscript -e "install.packages('apcluster')" \
     && Rscript -e "install.packages('base64')" \
     && Rscript -e "install.packages('basedosdados')" \
@@ -90,6 +91,8 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('ellipse')" \
     && Rscript -e "install.packages('e1071')" \
     && Rscript -e "install.packages('FNN')" \
+    && Rscript -e "install.packages('fastmatch')" \
+    && Rscript -e "install.packages('filelock')" \
     && Rscript -e "install.packages('fastDummies')" \
     && Rscript -e "install.packages('fastICA')" \
     && Rscript -e "install.packages('fields')" \
@@ -98,6 +101,7 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('flexmix')" \
     && Rscript -e "install.packages('fpc')" \
     && Rscript -e "install.packages('Formula')" \
+    && Rscript -e "install.packages('formatR')" \
     && Rscript -e "install.packages('GlobalOptions')" \
     && Rscript -e "install.packages('gapminder')" \
     && Rscript -e "install.packages('gdata')" \
@@ -121,6 +125,14 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('ggraph')" \
     && Rscript -e "install.packages('ggthemes')" \ 
     && Rscript -e "install.packages('ggvenn')" \ 
+    && Rscript -e "install.packages('ggfun')" \
+    && Rscript -e "install.packages('ggm')" \
+    && Rscript -e "install.packages('ggnewscale')" \
+    && Rscript -e "install.packages('ggplotify')" \
+    && Rscript -e "install.packages('ggtree')" \
+    && Rscript -e "install.packages('gridGraphics')" \
+    && Rscript -e "install.packages('graph')" \
+    && Rscript -e "install.packages('gson')" \
     && Rscript -e "install.packages('gridExtra')" \ 
     && Rscript -e "install.packages('Hmisc')" \
     && Rscript -e "install.packages('hash')" \
@@ -138,6 +150,8 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e 'install.packages("janitor")' \
     && Rscript -e "install.packages('kernlab')" \
     && Rscript -e "install.packages('kableExtra')" \
+    && Rscript -e "install.packages('locfit')" \
+    && Rscript -e "install.packages('lambda.r')" \
     && Rscript -e "install.packages('lars')" \
     && Rscript -e "install.packages('latex2exp')" \
     && Rscript -e "install.packages('latticeExtra')" \
@@ -204,6 +218,14 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('RcppAnnoy')" \
     && Rscript -e "install.packages('RcppML')" \
     && Rscript -e "install.packages('RcppProgress')" \
+    && Rscript -e "install.packages('R.oo')" \
+    && Rscript -e "install.packages('R.utils')" \
+    && Rscript -e "install.packages('RBGL')" \
+    && Rscript -e "install.packages('RcppHNSW')" \
+    && Rscript -e "install.packages('Rmpfr')" \
+    && Rscript -e "install.packages('rsvd')" \
+    && Rscript -e "install.packages('rngtools')" \
+    && Rscript -e "install.packages('rgl')" \
     && Rscript -e "install.packages('remotes')" \
     && Rscript -e "install.packages('reshape2')" \
     && Rscript -e "install.packages('rmdformats')" \ 
@@ -211,6 +233,8 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('rmarkdown')" \ 
     && Rscript -e "install.packages('reticulate')" \ 
     && Rscript -e "install.packages('Rtsne')" \ 
+    && Rscript -e "install.packages('shadowtext')" \
+    && Rscript -e "install.packages('scatterpie')" \
     && Rscript -e "install.packages('s2')" \
     && Rscript -e "install.packages('scattermore')" \
     && Rscript -e "install.packages('scales')" \ 
@@ -260,6 +284,5 @@ RUN && Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('writexl')" \
     && Rscript -e "install.packages('xlsx')" \
     && Rscript -e "install.packages('xts')" \
+    && Rscript -e "install.packages('yulab.utils')" \
     && Rscript -e "install.packages('zeallot')" 
-
-
