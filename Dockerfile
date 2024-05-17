@@ -6,7 +6,8 @@ ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/R/lib"
 ## Configures to avoid session data filling $HOME
 Run apt-get update &&  apt-get install -y vim && \
     echo session-timeout-minutes=0 >> /etc/rstudio/rsession.conf  && \
-    echo session-save-action-default=no >> /etc/rstudio/rsession.conf 
+    echo session-save-action-default=no >> /etc/rstudio/rsession.conf && \
+    echo copilot-enabled=1 >> /etc/rstudio/rsession.conf 
 
 RUN apt-get -y update && apt-get -y install python3 python3-dev python3-pip zlib1g libgmp3-dev libglpk-dev gfortran \
     libudunits2-dev \
