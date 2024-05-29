@@ -22,6 +22,7 @@ RUN apt-get -y update && apt-get -y install python3 python3-dev python3-pip zlib
     texlive-fonts-extra \
     texlive-latex-extra \
     libmagick++-dev fftw3 fftw-dev \
+    libgsl-dev \
     libboost-all-dev \ 
     python-is-python3 \
     && apt-get -y autoremove \
@@ -176,6 +177,7 @@ RUN Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('multcompView')" \
     && Rscript -e "install.packages('naturalsort')" \
     && Rscript -e "install.packages('nempi')" \
+    && Rscript -e "install.packages('nestedcv')" \
     && Rscript -e "install.packages('nleqslv')" \
     && Rscript -e "install.packages('nor1mix')" \
     && Rscript -e "install.packages('openxlsx', dependencies = TRUE)" \
@@ -222,6 +224,7 @@ RUN Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('R.utils')" \
     && Rscript -e "install.packages('RBGL')" \
     && Rscript -e "install.packages('RcppHNSW')" \
+    && Rscript -e "install.packages('RcppZiggurat')" \
     && Rscript -e "install.packages('Rmpfr')" \
     && Rscript -e "install.packages('rsvd')" \
     && Rscript -e "install.packages('rngtools')" \
