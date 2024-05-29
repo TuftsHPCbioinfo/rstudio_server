@@ -267,6 +267,7 @@ RUN Rscript -e "install.packages('amap')" \
     && Rscript -e "install.packages('sva')" \
     && Rscript -e "install.packages('tensor')" \
     && Rscript -e "install.packages('terra')" \
+    && Rscript -e "install.packages('tidymodels')" \
     && Rscript -e "install.packages('trackplot')" \
     && Rscript -e "install.packages('tsne')" \
     && Rscript -e "install.packages('tweedie')" \
