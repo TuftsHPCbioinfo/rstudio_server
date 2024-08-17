@@ -33,4 +33,4 @@ jobs:
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           build-args: |
-            GPAT=${{ secrets.GITHUB_PAT }}
+            GPAT=${{ secrets.GPAT }}
