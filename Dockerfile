@@ -1,4 +1,7 @@
-FROM rocker/tidyverse:4.4.0
+FROM rocker/tidyverse:4.4.1
+
+ARG GPAT
+ENV GITHUB_PAT=${GPAT}
 
 ENV PATH="$PATH:/usr/lib/rstudio-server/bin"
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/R/lib"
