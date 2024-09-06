@@ -121,7 +121,8 @@ RUN Rscript -e "remotes::install_github('satijalab/azimuth')" \
     && Rscript -e 'devtools::install_github("CBMR-Single-Cell-Omics-Platform/SCOPfunctions")' \
     && Rscript -e "devtools::install_github('igrabski/sc-SHC')" \
     && Rscript -e "devtools::install_github('satijalab/seurat-data')" \
-    && Rscript -e "remotes::install_github('mojaveazure/seurat-disk')" \
+    && Rscript -e "devtools::install_github('pinin4fjords/shinyngs')" \
+    && Rscript -e "remotes::install_github('satijalab/seurat-wrappers')" \
     && Rscript -e "remotes::install_github('satijalab/seurat-wrappers')" \
     && Rscript -e "devtools::install_github('arc85/singleseqgset')" \
     && Rscript -e "devtools::install_github('EliGurarie/smoove')" \
