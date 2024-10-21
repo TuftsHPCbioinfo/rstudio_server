@@ -115,6 +115,7 @@ RUN Rscript -e "remotes::install_github('satijalab/azimuth')" \
     && Rscript -e "devtools::install_github('jbisanz/qiime2R')" \
     && Rscript -e "devtools::install_github('cysouw/qlcMatrix')" \
     && Rscript -e "remotes::install_github('WSpiller/RadialMR')" \
+    && Rscript -e "remotes::install_github('rmcelreath/rethinking')" \
     && Rscript -e "devtools::install_github('JGCRI/rgcam')" \
     && Rscript -e "devtools::install_github('JGCRI/rpackageutils')" \
     && Rscript -e "devtools::install_github('cellgeni/sceasy')" \

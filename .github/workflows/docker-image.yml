@@ -22,7 +22,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            yzhangtufts/rserver
+            tuftsttsrt/rserver
           tags: type=semver,pattern={{version}}
       - name: Build & Publish Docker Image
         uses: docker/build-push-action@v5
