@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.4.1
+FROM rocker/tidyverse:4.4.2
 
 ARG GPAT
 ENV GITHUB_PAT=ENV GITHUB_PAT=${GPAT}
@@ -45,20 +45,20 @@ RUN cd /opt && wget http://www.fftw.org/fftw-3.3.10.tar.gz \
 
 ## Install latest cmake
 RUN cd /opt \
-    && wget https://github.com/Kitware/CMake/archive/refs/tags/v3.30.2.tar.gz \
-    && tar -zxvf v3.30.2.tar.gz \
-    && cd CMake-3.30.2 \
+    && wget https://github.com/Kitware/CMake/releases/download/v3.31.0/cmake-3.31.0.tar.gz\
+    && tar -zxvf cmake-3.31.0.tar.gz\
+    && cd cmake-3.31.0 \
     && ./bootstrap \
     && make \
     && make install \
-    && rm /opt/v3.30.2.tar.gz \
-    && rm -rf /opt/CMake-3.30.2
+    && rm /opt/cmake-3.31.0.tar.gz \
+    && rm -rf /opt/cmake-3.31.0
 
 ## Install pandoc
 RUN cd /opt \
-    && wget https://github.com/jgm/pandoc/releases/download/3.1.13/pandoc-3.1.13-1-amd64.deb \
-    && dpkg -i pandoc-3.1.13-1-amd64.deb \
-    && rm pandoc-3.1.13-1-amd64.deb
+    && wget https://github.com/jgm/pandoc/releases/download/3.5/pandoc-3.5-1-amd64.deb\
+    && dpkg -i pandoc-3.5-1-amd64.deb \
+    && rm pandoc-3.5-1-amd64.deb
 
 ## Install Miniforge
 RUN wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh -O Miniforge3.sh \
