@@ -1,5 +1,6 @@
 satijalab/azimuth
 stefpeschel/NetCoMi
+Coolgenome/iTALK
 cnfoley/hyprcoloc
 bnprks/BPCells/r
 bnprks/BPCells

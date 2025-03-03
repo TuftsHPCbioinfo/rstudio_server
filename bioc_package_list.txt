@@ -235,6 +235,7 @@ scde
 schex
 scHOT
 scran
+scRNAseq
 scry
 scuttle
 SeqArray
@@ -261,11 +262,15 @@ SummarizedExperiment
 sva
 TFBSTools
 topGO
+tradeSeq 
 TrajectoryUtils
 treeio
 TreeSummarizedExperiment
 tricycle
 TxDb.Hsapiens.UCSC.hg19.knownGene
+TxDb.Hsapiens.UCSC.hg38.knownGene
+TxDb.Mmusculus.UCSC.mm10.knownGene
+TxDb.Mmusculus.UCSC.mm39.knownGene
 txdbmaker
 TxDb.Sscrofa.UCSC.susScr3.refGene
 tximeta
@@ -279,4 +284,5 @@ wateRmelon
 Wrench
 XVector
 zellkonverter
+zinbwave
 zlibbioc

@@ -90,9 +90,9 @@ RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.pa
     && Rscript -e "BiocManager::install(scan('/tmp/bioc_package_list.txt', what = '', sep = '\n'))"
 
 ## Install CRAN packages that require Bioconductor dependencies
-RUN Rscript -e "install.packages(c(
-    'ADAPTS', 'codebook', 'conos', 'ggm', 'isva', 'metap', 'mutoss', 'NMF', 
-    'pcalg', 'scGate', 'scMappR', 'Signac', 'restfulr', 'rliger', 'WGCNA'
+RUN Rscript -e "install.packages(c( \
+    'ADAPTS', 'codebook', 'conos', 'ggm', 'isva', 'metap', 'mutoss', 'NMF', \
+    'pcalg', 'scGate', 'scMappR', 'Signac', 'restfulr', 'rliger', 'WGCNA' \
 ))"
 
 # --------------------------------------------------
@@ -115,9 +115,9 @@ RUN Rscript -e "pkgs <- scan('/tmp/github_packages.txt', what = '', sep = '\n');
 ## Install cellxgene.census and dependencies
 RUN pip install --no-cache-dir tiledb && \
     Rscript -e "install.packages('tiledb')" && \
-    Rscript -e "install.packages('cellxgene.census', repos = c(
-        'https://chanzuckerberg.r-universe.dev', 
-        'https://cloud.r-project.org'
+    Rscript -e "install.packages('cellxgene.census', repos = c(\
+        'https://chanzuckerberg.r-universe.dev', \
+        'https://cloud.r-project.org' \
     ))"
 
 ## Install ProjecTILs from GitHub
