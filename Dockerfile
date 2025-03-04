@@ -101,16 +101,15 @@ RUN Rscript -e "install.packages(c( \
 COPY github_packages.txt /tmp/
 
 # Install all GitHub packages in a single Rscript call
-RUN Rscript -e "pkgs <- scan('/tmp/github_packages.txt', what = '', sep = '\n'); \
+RUN Rscript -e "pkgs <- readLines('/tmp/github_packages.txt'); \
                 for (pkg in pkgs) { \
                     if (grepl('=', pkg)) { \
-                        parts <- strsplit(pkg, '=')[[1]]; \
+                        parts <- unlist(strsplit(pkg, '=')); \
                         remotes::install_github(parts[1], ref = parts[2]); \
                     } else { \
                         remotes::install_github(pkg); \
                     } \
                 }"
-
 
 ## Install cellxgene.census and dependencies
 RUN pip install --no-cache-dir tiledb && \
