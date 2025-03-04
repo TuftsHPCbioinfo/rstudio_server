@@ -119,6 +119,9 @@ RUN pip install --no-cache-dir tiledb && \
         'https://cloud.r-project.org' \
     ))"
 
+## Install MCPcounter
+RUN Rscript -e "devtools::install_github('ebecht/MCPcounter', ,ref='master', subdir='Source')"
+
 ## Install ProjecTILs from GitHub
 RUN Rscript -e "remotes::install_github('carmonalab/ProjecTILs')"
 
