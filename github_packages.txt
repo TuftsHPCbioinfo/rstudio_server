@@ -24,7 +24,6 @@ ghcarlalan/graveler
 omnideconv/immunedeconv
 10XGenomics/loupeR
 dklinges9/mcera5
-ebecht/MCPcounter
 ilyamaclean/microclima
 cit-bioinfo/mMCP-counter
 cole-trapnell-lab/monocle3
