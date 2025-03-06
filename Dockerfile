@@ -19,6 +19,7 @@ RUN apt-get update && \
         vim \
         python3 python3-dev python3-pip \
         zlib1g libgmp3-dev libglpk-dev gfortran \
+        jags \
         libudunits2-dev \
         libgdal-dev libgeos-dev libproj-dev \
         default-jre default-jdk \
