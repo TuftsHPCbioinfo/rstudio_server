@@ -1,4 +1,5 @@
 satijalab/azimuth
+RajLabMSSM/echoLD
 stefpeschel/NetCoMi
 Coolgenome/iTALK
 cnfoley/hyprcoloc
