@@ -50,14 +50,14 @@ RUN cd /opt && \
 # --------------------------------------------------
 # Install latest CMake from source
 RUN cd /opt && \
-    wget https://github.com/Kitware/CMake/releases/download/v4.0.1/cmake-4.0.1-linux-x86_64.tar.gz && \
-    tar -zxvf cmake-4.0.1-linux-x86_64.tar.gz && \
-    cd cmake-4.0.1-linux-x86_64 && \
+    wget https://github.com/Kitware/CMake/releases/download/v4.0.1/cmake-4.0.1.tar.gz && \
+    tar -zxvf cmake-4.0.1.tar.gz && \
+    cd cmake-4.0.1 && \
     ./bootstrap && \
     make && \
     make install && \
-    rm /opt/cmake-4.0.1-linux-x86_64.tar.gz && \
-    rm -rf /opt/cmake-4.0.1-linux-x86_64
+    rm /opt/cmake-4.0.1.tar.gz && \
+    rm -rf /opt/cmake-4.0.1
 
 # --------------------------------------------------
 # Install Pandoc (DEB package)
