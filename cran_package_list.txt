@@ -349,6 +349,7 @@ gtsummary
 GWASExactHW
 h2o
 hablar
+hahmmr
 hardhat
 harmony
 hash
@@ -551,6 +552,7 @@ nor1mix
 norm
 nortest
 Nozzle.R1
+numbat
 numDeriv
 nycflights13
 oce
