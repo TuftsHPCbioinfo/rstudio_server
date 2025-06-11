@@ -44,7 +44,6 @@ bigmemory
 bigmemory.sri
 bigrquery
 binom
-BiocManager
 bipartite
 bit
 bit64
@@ -777,6 +776,7 @@ scatterplot3d
 scCATCH
 sccore
 scCustomize
+scistreer
 scrime
 sctransform
 segmented
@@ -899,6 +899,7 @@ TMB
 tmvnsim
 tokenizers
 toOrdinal
+TRexSelector
 triangle
 triebeard
 truncdist

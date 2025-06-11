@@ -73,13 +73,6 @@ RUN wget https://github.com/conda-forge/miniforge/releases/latest/download/Minif
     rm Miniforge3.sh
 ENV PATH="/opt/conda/bin:$PATH"
 
-# --------------------------------------------------
-# CRAN packages
-# Copy the package list into the container
-COPY cran_package_list.txt /tmp/
-
-# Install CRAN packages using the list
-RUN Rscript -e "install.packages(scan('/tmp/cran_package_list.txt', what = '', sep = '\n'))"
 
 # --------------------------------------------------
 # Bioconductor packages
@@ -87,7 +80,7 @@ RUN Rscript -e "install.packages(scan('/tmp/cran_package_list.txt', what = '', s
 COPY bioc_package_list.txt /tmp/
 
 # Install Bioconductor packages using the list
-RUN Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")' \
+RUN Rscript -e "install.packages('BiocManager')" && Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")' \
     && Rscript -e "BiocManager::install(scan('/tmp/bioc_package_list.txt', what = '', sep = '\n'))"
 
 ## Install CRAN packages that require Bioconductor dependencies
@@ -95,6 +88,16 @@ RUN Rscript -e "install.packages(c( \
     'ADAPTS', 'codebook', 'conos', 'ggm', 'isva', 'metap', 'mutoss', 'NMF', \
     'pcalg', 'scGate', 'scMappR', 'Signac', 'restfulr', 'rliger', 'WGCNA' \
 ))"
+
+
+# --------------------------------------------------
+# CRAN packages
+# Copy the package list into the container
+COPY cran_package_list.txt /tmp/
+
+
+# Install CRAN packages using the list
+RUN Rscript -e "install.packages(scan('/tmp/cran_package_list.txt', what = '', sep = '\n'))"
 
 # --------------------------------------------------
 # Github packages
