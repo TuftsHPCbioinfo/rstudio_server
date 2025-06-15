@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.5
+FROM rocker/tidyverse:4.5.1
 
 # Pass in GitHub PAT via build argument and set environment variable
 ARG GPAT
@@ -50,21 +50,21 @@ RUN cd /opt && \
 # --------------------------------------------------
 # Install latest CMake from source
 RUN cd /opt && \
-    wget https://github.com/Kitware/CMake/releases/download/v4.0.1/cmake-4.0.1.tar.gz && \
-    tar -zxvf cmake-4.0.1.tar.gz && \
-    cd cmake-4.0.1 && \
+    wget https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3.tar.gz && \
+    tar -zxvf cmake-4.0.3.tar.gz && \
+    cd cmake-4.0.3 && \
     ./bootstrap && \
     make && \
     make install && \
-    rm /opt/cmake-4.0.1.tar.gz && \
-    rm -rf /opt/cmake-4.0.1
+    rm /opt/cmake-4.0.3.tar.gz && \
+    rm -rf /opt/cmake-4.0.3
 
 # --------------------------------------------------
 # Install Pandoc (DEB package)
 RUN cd /opt && \
-    wget https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-amd64.deb && \
-    dpkg -i pandoc-3.6.4-1-amd64.deb && \
-    rm pandoc-3.6.4-1-amd64.deb
+    wget https://github.com/jgm/pandoc/releases/download/3.7.0.2/pandoc-3.7.0.2-1-amd64.deb && \
+    dpkg -i pandoc-3.7.0.2-1-amd64.deb && \
+    rm pandoc-3.7.0.2-1-amd64.deb
 
 # --------------------------------------------------
 # Install Miniforge (Conda)
