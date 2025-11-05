@@ -138,6 +138,7 @@ IlluminaHumanMethylationEPICanno.ilm10b4.hg19
 IlluminaHumanMethylationEPICmanifest
 illuminaio
 impute
+infercnv
 interactiveDisplayBase
 IRanges
 karyoploteR
