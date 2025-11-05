@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.5.1
+FROM rocker/tidyverse:4.5.2
 
 # Pass in GitHub PAT via build argument and set environment variable
 ARG GPAT
