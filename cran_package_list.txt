@@ -937,6 +937,7 @@ viridis
 viridisLite
 visdat
 visNetwork
+vivid
 vroom
 vtable
 waiter
