@@ -17,24 +17,34 @@ RUN echo "session-timeout-minutes=0" >> /etc/rstudio/rsession.conf && \
 
 # Install OS-level dependencies in one layer (using --no-install-recommends to avoid extra packages)
 RUN apt-get update && \
+
     apt-get install -y --no-install-recommends \
         vim \
         python3 python3-dev python3-pip \
-        zlib1g libgmp3-dev libglpk-dev gfortran \
+        zlib1g \
+        libgmp3-dev \
+        libglpk-dev \
+        gfortran \
         jags \
         libudunits2-dev \
-        libgdal-dev libgeos-dev libproj-dev \
-        default-jre default-jdk \
-        libmysqlclient-dev \
-        texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra \
-        libmagick++-dev fftw-dev \
+        libgdal-dev \
+        libgeos-dev \
+        libproj-dev \
+        default-jre \
+        default-jdk \
+        default-libmysqlclient-dev \
+        texlive-latex-base \
+        texlive-fonts-recommended \
+        texlive-fonts-extra \
+        texlive-latex-extra \
+        libmagick++-dev \
+        libfftw3-dev \
         libgsl-dev \
         libboost-all-dev \
         libzmq5 \
         python-is-python3 && \
-    apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf /var/lib/apt/lists/*
 
 
 # --------------------------------------------------
