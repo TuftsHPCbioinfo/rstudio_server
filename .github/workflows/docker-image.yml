@@ -1,6 +1,12 @@
 name: Build & Publish Docker Image
 
 on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
   release:
     types: [published]
 
@@ -46,9 +52,10 @@ jobs:
           images: |
             tuftsttsrt/rserver
           tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{version}},enable=${{ github.event_name == 'release' }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ github.event_name == 'release' }}
             type=raw,value=latest
+            type=sha,prefix=sha-
 
       - name: Build & Push Multi-Arch Image
         uses: docker/build-push-action@v6
@@ -63,11 +70,9 @@ jobs:
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
 
-          # Faster local persistent cache
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
-          # Better security than build-args
           secrets: |
             GPAT=${{ secrets.GPAT }}
 
