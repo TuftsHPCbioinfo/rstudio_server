@@ -1,7 +1,9 @@
-FROM rocker/tidyverse:4.5.2
+FROM rocker/tidyverse:4.6.0
 
 # Pass in GitHub PAT via build argument and set environment variable
 ARG GPAT
+ARG TARGETARCH
+ARG PANDOC_VERSION=3.9.0.2
 ENV GITHUB_PAT=${GPAT}
 
 # Extend PATH and set library path for R
@@ -38,33 +40,38 @@ RUN apt-get update && \
 # --------------------------------------------------
 # Build FFTW from source
 RUN cd /opt && \
-    wget http://www.fftw.org/fftw-3.3.10.tar.gz && \
-    tar -xvf fftw-3.3.10.tar.gz && \
-    cd fftw-3.3.10 && \
+    wget http://www.fftw.org/fftw-3.3.11.tar.gz&& \
+    tar -xvf fftw-3.3.11.tar.gz && \
+    cd fftw-3.3.11 && \
     ./configure --enable-shared && \
     make CFLAGS=-fPIC && \
     make install && \
-    rm /opt/fftw-3.3.10.tar.gz && \
-    rm -rf /opt/fftw-3.3.10
+    rm /opt/fftw-3.3.11.tar.gz && \
+    rm -rf /opt/fftw-3.3.11
 
 # --------------------------------------------------
 # Install latest CMake from source
 RUN cd /opt && \
-    wget https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3.tar.gz && \
-    tar -zxvf cmake-4.0.3.tar.gz && \
-    cd cmake-4.0.3 && \
-    ./bootstrap && \
-    make && \
-    make install && \
-    rm /opt/cmake-4.0.3.tar.gz && \
-    rm -rf /opt/cmake-4.0.3
+    wget https://github.com/Kitware/CMake/releases/download/v4.3.2/cmake-4.3.2-linux-x86_64.tar.gz && \
+    tar -xzf cmake-4.3.2-linux-x86_64.tar.gz && \
+    ln -s /opt/cmake-4.3.2-linux-x86_64/bin/cmake /usr/local/bin/cmake && \
+    rm cmake-4.3.2-linux-x86_64.tar.gz
 
 # --------------------------------------------------
 # Install Pandoc (DEB package)
-RUN cd /opt && \
-    wget https://github.com/jgm/pandoc/releases/download/3.7.0.2/pandoc-3.7.0.2-1-amd64.deb && \
-    dpkg -i pandoc-3.7.0.2-1-amd64.deb && \
-    rm pandoc-3.7.0.2-1-amd64.deb
+RUN case "${TARGETARCH}" in \
+
+        amd64) PANDOC_ARCH="amd64" ;; \
+
+        arm64) PANDOC_ARCH="arm64" ;; \
+
+        *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    cd /tmp && \
+    wget -q \
+    "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-${PANDOC_ARCH}.deb" && \
+    dpkg -i "pandoc-${PANDOC_VERSION}-1-${PANDOC_ARCH}.deb" && \
+    rm -f "pandoc-${PANDOC_VERSION}-1-${PANDOC_ARCH}.deb"
 
 # --------------------------------------------------
 # Install Miniforge (Conda)

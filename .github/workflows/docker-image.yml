@@ -1,36 +1,80 @@
 name: Build & Publish Docker Image
+
 on:
   release:
     types: [published]
 
+concurrency:
+  group: docker-build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   push-to-dockerhub:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, macos]
+
     permissions:
-      packages: write
       contents: read
+      packages: write
+
+    env:
+      DOCKER_BUILDKIT: 1
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Login to Dockerhub
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          install: true
+          driver-opts: |
+            network=host
+
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Extract Metadata
+      - name: Extract Docker Metadata
         id: metadata
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             tuftsttsrt/rserver
-          tags: type=semver,pattern={{version}}
-      - name: Build & Publish Docker Image
-        uses: docker/build-push-action@v5
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest
+
+      - name: Build & Push Multi-Arch Image
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
+
+          platforms: linux/amd64,linux/arm64
+
           push: true
+
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
-          build-args: |
+
+          # Faster local persistent cache
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+          # Better security than build-args
+          secrets: |
             GPAT=${{ secrets.GPAT }}
+
+          provenance: false
+          sbom: false
+
+      - name: Move Build Cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
