@@ -16,8 +16,7 @@ concurrency:
 
 jobs:
   push-to-dockerhub:
-    runs-on: [self-hosted, macos]
-
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
