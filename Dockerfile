@@ -17,6 +17,7 @@ RUN echo "session-timeout-minutes=0" >> /etc/rstudio/rsession.conf && \
 
 # Install OS-level dependencies in one layer (using --no-install-recommends to avoid extra packages)
 RUN echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4 && \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         vim \
         python3 python3-dev python3-pip \
