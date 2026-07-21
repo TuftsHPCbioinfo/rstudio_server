@@ -1,9 +1,10 @@
-FROM rocker/tidyverse:4.6.0
+FROM rocker/tidyverse:4.6.1
 
 # Pass in GitHub PAT via build argument and set environment variable
 ARG GPAT
 ARG TARGETARCH
 ARG PANDOC_VERSION=3.9.0.2
+ARG CMDSTAN_VERSION=2.39.0
 ENV GITHUB_PAT=${GPAT}
 
 # Extend PATH and set library path for R
@@ -24,6 +25,7 @@ RUN echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4 && \
         zlib1g \
         libgmp3-dev \
         libglpk-dev \
+        build-essential \
         gfortran \
         jags \
         libudunits2-dev \
@@ -90,6 +92,17 @@ RUN wget https://github.com/conda-forge/miniforge/releases/latest/download/Minif
     rm Miniforge3.sh
 ENV PATH="/opt/conda/bin:$PATH"
 
+# --------------------------------------------------
+# Install CmdStanR and CmdStan
+# CMDSTAN points to a system-wide installation available to all container users.
+ENV CMDSTAN=/opt/cmdstan/cmdstan-${CMDSTAN_VERSION}
+
+RUN mkdir -p /opt/cmdstan && \
+    Rscript -e "install.packages('cmdstanr', repos = c('https://stan-dev.r-universe.dev', 'https://cloud.r-project.org'))" && \
+    Rscript -e "cmdstanr::check_cmdstan_toolchain(quiet = FALSE)" && \
+    Rscript -e "cmdstanr::install_cmdstan(version = '${CMDSTAN_VERSION}', dir = '/opt/cmdstan', cores = max(1L, parallel::detectCores(logical = FALSE)), overwrite = TRUE)" && \
+    Rscript -e "stopifnot(cmdstanr::cmdstan_version() == package_version('${CMDSTAN_VERSION}'))" && \
+    chmod -R a+rX /opt/cmdstan
 
 # --------------------------------------------------
 # Bioconductor packages
