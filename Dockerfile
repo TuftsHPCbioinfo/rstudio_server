@@ -1,11 +1,8 @@
 FROM rocker/tidyverse:4.6.2
 
-# Pass in GitHub PAT via build argument and set environment variable
-ARG GPAT
 ARG TARGETARCH
 ARG PANDOC_VERSION=3.9.0.2
 ARG CMDSTAN_VERSION=2.39.0
-ENV GITHUB_PAT=${GPAT}
 
 # Extend PATH and set library path for R
 ENV PATH="$PATH:/usr/lib/rstudio-server/bin"
@@ -135,7 +132,9 @@ RUN Rscript -e "install.packages(scan('/tmp/cran_package_list.txt', what = '', s
 COPY github_packages.txt /tmp/
 
 # Install all GitHub packages in a single Rscript call
-RUN Rscript -e "pkgs <- readLines('/tmp/github_packages.txt'); \
+RUN --mount=type=secret,id=GPAT,required=true \
+    export GITHUB_PAT="$(cat /run/secrets/GPAT)" && \
+    Rscript -e "pkgs <- readLines('/tmp/github_packages.txt'); \
                 for (pkg in pkgs) { \
                     if (grepl('=', pkg)) { \
                         parts <- unlist(strsplit(pkg, '=')); \
@@ -154,10 +153,14 @@ RUN pip install --no-cache-dir tiledb && \
     ))"
 
 ## Install MCPcounter
-RUN Rscript -e "devtools::install_github('ebecht/MCPcounter', ,ref='master', subdir='Source')"
+RUN --mount=type=secret,id=GPAT,required=true \
+    export GITHUB_PAT="$(cat /run/secrets/GPAT)" && \
+    Rscript -e "devtools::install_github('ebecht/MCPcounter', ,ref='master', subdir='Source')"
 
 ## Install ProjecTILs from GitHub
-RUN Rscript -e "remotes::install_github('carmonalab/ProjecTILs')"
+RUN --mount=type=secret,id=GPAT,required=true \
+    export GITHUB_PAT="$(cat /run/secrets/GPAT)" && \
+    Rscript -e "remotes::install_github('carmonalab/ProjecTILs')"
 
 ## Install velocyto.R
 RUN wget -q https://github.com/velocyto-team/velocyto.R/archive/refs/tags/0.6.tar.gz && \
