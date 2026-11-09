@@ -1,18 +1,13 @@
 name: Build & Publish Docker Image
 
 on:
-  push:
-    branches:
-      - main
-
-  workflow_dispatch:
-
   release:
     types: [published]
 
 concurrency:
   group: docker-build-${{ github.ref }}
-  cancel-in-progress: true
+  # Let a running build finish so it can save its cache; newer runs wait in line.
+  cancel-in-progress: false
 
 jobs:
   push-to-dockerhub:
@@ -67,16 +62,13 @@ jobs:
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
 
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+          # Layer cache lives in Docker Hub, so it survives between runs.
+          # The first run after this change seeds it; later runs reuse unchanged layers.
+          cache-from: type=registry,ref=tuftsttsrt/rserver:buildcache
+          cache-to: type=registry,ref=tuftsttsrt/rserver:buildcache,mode=max,ignore-error=true
 
           secrets: |
             GPAT=${{ secrets.GPAT }}
 
           provenance: false
           sbom: false
-
-      - name: Move Build Cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
